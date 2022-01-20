@@ -3,7 +3,7 @@ from urllib import parse
 from bs4 import BeautifulSoup
 
 class StockCrawler():
-    targe_url = ' https://cn.investing.com/instruments/HistoricalDataAjax'
+    targe_url = 'https://cn.investing.com/instruments/HistoricalDataAjax'
     payloadData = {
         'curr_id': 6408,
         'smlID': 1159963,
