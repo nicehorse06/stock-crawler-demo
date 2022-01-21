@@ -1,6 +1,10 @@
 import requests
+import re
+
 from urllib import parse
 from bs4 import BeautifulSoup
+
+date_pattern = '[0-9]{4}/[0-9]{2}/[0-9]{2}'
 
 class StockCrawler():
     targe_url = 'https://cn.investing.com/instruments/HistoricalDataAjax'
@@ -21,6 +25,9 @@ class StockCrawler():
     }
 
     def __init__(self, start_date, end_date) -> None:
+        assert bool(re.match(date_pattern, start_date)), f'Pattern of start date is wrong， needs to be YYYY/MM/DD.'
+        assert bool(re.match(date_pattern, end_date)), f'Pattern of end date is wrong， needs to be YYYY/MM/DD.'
+
         self.payloadData['st_date'] = start_date
         self.payloadData['end_date'] = end_date
 
